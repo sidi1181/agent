@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: meilleur9ex_development
+
+test:
+  <<: *default
+  database: meilleur9ex_test
+
+production:
+  <<: *default
+  database: meilleur9ex_production
+  username: votre_utilisateur_pgsql
+  password: <%= ENV['MEILLEUR9EX_DATABASE_PASSWORD'] %>

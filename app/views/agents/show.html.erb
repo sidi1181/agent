@@ -1,0 +1,13 @@
+<p>
+    <strong>Name:</strong>
+    <%= @agent.name %>
+</p>
+  
+<p>
+    <strong>Email:</strong>
+    <%= @agent.email %>
+</p>
+  
+<%= link_to 'Edit', edit_agent_path(@agent) %> |
+<%= link_to 'Back', agents_path %>
+  

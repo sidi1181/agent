@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_debut: 2024-08-06
+  date_fin: 2024-08-06
+  status: MyString
+  agent: one
+
+two:
+  date_debut: 2024-08-06
+  date_fin: 2024-08-06
+  status: MyString
+  agent: two

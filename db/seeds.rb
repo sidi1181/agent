@@ -1,0 +1,2 @@
+Agent.create(name: 'sidi ahmed', email: 'adminmicro@example.com', code: '1234', birthday: '20/07/2023', status: 'president')
+Agent.create(name: 'ibra moussa', email: 'moussaibrahim@exemple.com', code: '1234', birthday: '20/07/2023', status: 'president')
