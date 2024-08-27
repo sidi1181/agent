@@ -1,4 +1,4 @@
-class ContratDecorator < Draper::Decorator
+class ContratDecorator < ApplicationDecorator
   delegate_all
 
   def operation_date
