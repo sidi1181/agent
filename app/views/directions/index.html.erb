@@ -21,19 +21,19 @@
     <table class="min-w-full bg-white border border-gray-200 mt-4">
       <thead class="bg-indigo-600 text-white ">
         <tr>
-          <th class="text-left table-col">ID</th>
-          <th class="text-left table-col">Name</th>
-          <th class="text-left table-col">description</th>
-          <th class="text-left table-col">Action</th>
+          <th class="text-left py-2 px-4 border-b">Created_at</th>
+          <th class="text-left py-2 px-4 border-b">Name</th>
+          <th class="text-left py-2 px-4 border-b">description</th>
+          <th class="text-left py-2 px-4 border-b">Action</th>
         </tr>
       </thead>
       <tbody>
         <% @directions.each do |direction| %>
           <tr>
-            <td class="table-col"><%= direction.id %></td>
-            <td class="table-col"><%= direction.name %></td>
-            <td class="table-col"><%= direction.description %></td>
-            <td class="table-col">
+            <td class="py-2 px-4 border-b"><%= direction.decorate.formatted_created_at %></td>
+            <td class="py-2 px-4 border-b"><%= direction.name %></td>
+            <td class="py-2 px-4 border-b"><%= direction.description %></td>
+            <td class="py-2 px-4 border-b">
               <%= link_to 'Modifier', edit_direction_path(direction), class: 'bg-red-600 text-white py-1 px-2 rounded mr-1' %>
               <%= link_to 'Voir', direction_path(direction), class: 'bg-blue-600 text-white py-1 px-2 rounded mr-1' %>
               <%= link_to 'Supprimer', direction, data: {  turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'bg-red-700 text-white py-1 px-2 rounded' %>
