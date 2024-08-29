@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   resources :directions
   resources :contrats
   resources :maisons, only: [:index]
-  root "maisons#index"
+  root "agents#index"
 end

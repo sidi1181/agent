@@ -4,11 +4,23 @@
 @tailwind utilities;
 
 @layer utilities {
-  .table-col {
-    @apply py-2 px-4 border-b;
+  .les_td {
+    @apply py-2 px-4 border-b font-medium;
+  }
+
+  .styles_pg_search {
+    @apply mt-1 block w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+  }
+
+  .select {
+    @apply mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+  }
+
+  .les_tr {
+    @apply text-left py-2 px-4 border-b;
   }
 
   .button {
-    @apply mt-1 block w-full px-3 py-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+    @apply text-white py-1 px-4 rounded;
   }
 }

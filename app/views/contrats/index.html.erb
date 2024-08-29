@@ -2,49 +2,49 @@
   <%= form_with url: contrats_path, method: :get, local: true, class: "space-y-4" do |form| %>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div>  
-        <%= form.text_field :query, value: params[:query], placeholder: "Rechercher par nom de l' agent", class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+        <%= form.text_field :query, value: params[:query], placeholder: "Rechercher par nom de l' agent", class: "select" %>
       </div>
 
       <div>
-        <%= form.date_field :date_debut, value: params[:date_debut], class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+        <%= form.date_field :date_debut, value: params[:date_debut], class: "select" %>
       </div>
     </div>
 
     <div>
-      <%= form.submit "Rechercher", class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <%= form.submit "Rechercher", class: "button bg-indigo-600" %>
     </div>
   <% end %>
-  <div class="flex justify-end absolute bottom-0 right-0 p-1">
-    <%= link_to 'Déconnexion', destroy_user_session_path, class: 'bg-indigo-600 text-white py-1 px-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 gap-2 whitespace-nowrap inline-flex items-center text-sm', data: { turbo_method: :delete, turbo_confirm: "Etes-vous sûre de vouloir vous déconnecter?" } %>
-  </div>
+  
   <div class="flex justify-between items-center">
     <h1 class="text-2xl font-bold">Contrat</h1>
-    <%= link_to 'Nouvel Contrat', new_contrat_path, class: 'bg-red-600 text-white py-1 px-2 rounded' %>
+    <%= link_to 'Nouvel Contrat', new_contrat_path, class: 'bg-red-600 button' %>
   </div>
-  <table class="min-w-full bg-white border border-gray-200 mt-4">
-    <thead class="bg-indigo-600 text-white ">
-      <tr>
-        <th class="text-left py-2 px-4 border-b">Created_at</th>
-        <th class="text-left py-2 px-4 border-b">Name</th>
-        <th class="text-left py-2 px-6 border-b">Durée du contrat</th>
-        <th class="text-left py-2 px-4 border-b">Status</th>
-        <th class="text-left py-2 px-4 border-b">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @contrats.each do |contrat| %>
+  <div class=" mt-4 max-h-80 overflow-y-auto border border-gray-300 rounded-md p-4">
+    <table class="min-w-full bg-white border border-gray-200 mt-4">
+      <thead class="bg-indigo-600 text-white ">
         <tr>
-          <td class="py-1 px-4 border-b"><%= contrat.id %></td>
-          <td class="py-2 px-4 border-b"><%= contrat.agent.name %></td>
-          <td class="py-2 px-6 font-bold border-b"><%= contrat.decorate.operation_date %></td>
-          <td class="py-2 px-4 border-b"><%= contrat.agent.status %></td>
-          <td class="py-2 px-4 border-b">
-            <%= link_to 'Modifier', edit_contrat_path(contrat), class: 'bg-red-600 text-white py-1 px-2 rounded mr-1' %>
-            <%= link_to 'Voir', contrat_path(contrat), class: 'bg-blue-600 text-white py-1 px-2 rounded mr-1' %>
-            <%= link_to 'Supprimer', contrat, data: {  turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'bg-red-700 text-white py-1 px-2 rounded' %>
-          </td>
+          <th class="les_tr">Created_at</th>
+          <th class="les_tr">Name</th>
+          <th class="les_tr">Durée du contrat</th>
+          <th class="les_tr">Status</th>
+          <th class="les_tr">Action</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @contrats.each do |contrat| %>
+          <tr>
+            <td class="les_td"><%= contrat.id %></td>
+            <td class="les_td"><%= contrat.agent.name %></td>
+            <td class="les_td"><%= contrat.decorate.operation_date %></td>
+            <td class="les_td"><%= contrat.agent.status %></td>
+            <td class="les_td">
+              <%= link_to 'Modifier', edit_contrat_path(contrat), class: 'bg-red-600 button' %>
+              <%= link_to 'Voir', contrat_path(contrat), class: 'bg-blue-600 button' %>
+              <%= link_to 'Supprimer', contrat, data: {  turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'bg-red-700 button' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
