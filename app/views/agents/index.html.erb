@@ -5,65 +5,65 @@
       <%= form_with url: agents_path, method: :get, local: true, class: "space-y-4" do |form| %>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
           <div>
-            <%= form.text_field :name, value: params[:name], placeholder: "Saisir le nom", class: "button" %>
+            <%= form.text_field :name, value: params[:name], placeholder: "Saisir le nom", class: "styles_pg_search" %>
           </div>
           <div>
-            <%= form.collection_select :direction_id, @directions, :id, :name, { prompt: "Sélectionner une direction", selected: params[:direction_id] }, { class: "button" } %>
+            <%= form.collection_select :direction_id, @directions, :id, :name, { prompt: "Sélectionner une direction", selected: params[:direction_id] }, { class: "styles_pg_search" } %>
           </div>
           <div>
-            <%= form.select :status, options_for_select(@statuses, selected: params[:status]), { prompt: "Sélectionner un statut" }, { class: "button" } %>
+            <%= form.select :status, options_for_select(@statuses, selected: params[:status]), { prompt: "Sélectionner un statut" }, { class: "styles_pg_search" } %>
           </div>
           <div>
-            <%= form.date_field :start_date, value: params[:start_date], class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+            <%= form.date_field :start_date, value: params[:start_date], class: "select" %>
           </div>
           <div>
-            <%= form.date_field :end_date, value: params[:end_date], class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+            <%= form.date_field :end_date, value: params[:end_date], class: "select" %>
           </div>
         </div>
         <div>
-          <%= form.submit "Rechercher", class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+          <%= form.submit "Rechercher", class: "button bg-red-600" %>
         </div>
       <% end %>    
 
       <div class=" grid grid-cols-1 md:grid-cols-3 gap-4 flex justify-between items-center mt-4">
         <div>
-          <%= link_to 'Nouvel agent', new_agent_path, class: 'bg-indigo-600 text-white py-1 px-4 rounded' %>
+          <%= link_to 'Nouvel agent', new_agent_path, class: 'button bg-indigo-600 ' %>
         </div>
         <div>
-          <%= link_to 'Exporter en Excel', agents_path(export: true, name: params[:name], direction_id: params[:direction_id], status: params[:status], start_date: params[:start_date], end_date: params[:end_date]), class: 'bg-indigo-600 text-white py-1 px-4 rounded' %>
+          <%= link_to 'Exporter en Excel', agents_path(export: true, name: params[:name], direction_id: params[:direction_id], status: params[:status], start_date: params[:start_date], end_date: params[:end_date]), class: 'button bg-indigo-600' %>
         </div>        
         <div>
-          <%= link_to 'Importer un excel', importation_agents_path, class: 'bg-indigo-600 text-white py-1 px-4 rounded' %>
+          <%= link_to 'Importer un excel', importation_agents_path, class: 'button bg-indigo-600' %>
         </div>
       </div>
       <div class=" mt-4 max-h-80 overflow-y-auto border border-gray-300 rounded-md p-4">
         <table class="min-w-full bg-white border border-gray-200">
           <thead class="bg-indigo-600 text-white ">
             <tr>
-              <th class="text-left py-2 table-col">Crée</th>
-              <th class="text-left py-2 table-col">Name</th>
-              <th class="text-left py-2 table-col">E-mail</th>
-              <th class="text-left py-2 table-col">Code</th>
-              <th class="text-left py-2 table-col">Direction</th>
-              <th class="text-left py-2 table-col">Status</th>         
-              <th class="text-left py-2 table-col">Action</th>
+              <th class="les_tr">Crée</th>
+              <th class="les_tr">Name</th>
+              <th class="les_tr">E-mail</th>
+              <th class="les_tr">Code</th>
+              <th class="les_tr">Direction</th>
+              <th class="les_tr">Status</th>         
+              <th class="les_tr">Action</th>
             </tr>
           </thead>
           <tbody>
             <% @agents.each do |agent| %>
               <tr>
-                <td class="table-col font-medium"><%= agent.decorate.formatted_created_at %></td>
-                <td class="table-col font-medium"><%= agent.name %></td>
-                <td class="table-col font-medium"><%= agent.email %></td>
-                <td class="table-col font-medium"><%= agent.code %></td>
-                <td class="table-col font-medium">
+                <td class="les_td"><%= agent.decorate.formatted_created_at %></td>
+                <td class="les_td"><%= agent.name %></td>
+                <td class="les_td"><%= agent.email %></td>
+                <td class="les_td"><%= agent.code %></td>
+                <td class="les_td">
                   <%= agent.direction.present? ? agent.direction.name : 'No Direction' %>
                 </td>
-                <td class="table-col font-medium"><%= agent.status %></td>
-                <td class="table-col">
-                  <%= link_to 'Modifier', edit_agent_path(agent), class: 'bg-red-600 text-white py-1 px-2 rounded mr-1' %>
-                  <%= link_to 'Voir', agent_path(agent), class: 'bg-blue-600 text-white py-1 px-2 rounded mr-1' %>
-                  <%= link_to 'Supprimer', agent, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'bg-red-700 text-white py-1 px-2 rounded' %>
+                <td class="les_td"><%= agent.status %></td>
+                <td class="les_td">
+                  <%= link_to 'Modifier', edit_agent_path(agent), class: ' button bg-red-600 ' %>
+                  <%= link_to 'Voir', agent_path(agent), class: ' button bg-blue-600' %>
+                  <%= link_to 'Supprimer', agent, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: ' button bg-red-600' %>
                 </td>
               </tr>
             <% end %>
